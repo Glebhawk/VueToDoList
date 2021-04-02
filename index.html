@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Список справ</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div id="app">
+    <div class="header">
+      <div class="container">
+        <div class="logo">Список справ</div>
+        <div class="catAge"><a href="catAge.html">Калькулятор котячого віку</a></div>
+      </div>
+    </div>
+    <div class="container">
+    	<div class="form">
+          <input
+          class="task"
+            type="text"
+            v-bind:value="valueInput"
+            v-on:input="handleInput"
+            v-on:keypress.enter="addTask"
+            >
+          <button class="btn" v-on:click="addTask">Додати справу</button>
+        </div>
+      <h2>
+        <span>Зробити</span>
+        <span class="mask-num">{{ toDoList.length }}</span>
+      </h2>
+      <p v-show="toDoList.length === 0">Вітаю! Ви все зробили! Можете заслужено відпочити!</p>
+      <ul class="mask-list">
+        <li
+          v-for="(task, index) in toDoList"
+          :key="task.id"
+        >
+          <div>
+            <input type="checkbox" v-on:change="doCheck(index, 'need')"/>
+            <span>{{ task.title }}</span>
+          </div>
+          <button class="btn-remove" v-on:click="removeTask(index, 'need')">Видалити</button>
+        </li>
+      </ul>
+      <h2>
+        <span>Зроблено</span>
+        <span class="mask-num">{{ completeList.length }}</span>
+      </h2>
+      <ul class="mask-list complete-list">
+        <li
+          v-for="(task, index) in completeList"
+          :key="task.id"
+        >
+          <div>
+            <input type="checkbox" v-on:change="doCheck(index, 'complete')"  checked>
+            <span>{{ task.title }}</span>
+          </div>
+          <button class="btn-remove" v-on:click="removeTask(index, 'complete')">Видалити</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <script src="https://unpkg.com/vue@next"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

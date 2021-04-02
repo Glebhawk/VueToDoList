@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Список справ</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div id="app">
+    <div class="header">
+      <div class="container">
+        <div class="logo">Калькулятор котячого віку</div>
+        <div class="catAge"><a href="index.html">Список справ</a></div>
+      </div>
+    </div>
+    <div class="container">
+      <p>Калькулятор переводить вік кота в людський вік</p>
+      <p>Вік кота</p>
+      <p>Роки &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Місяці</p>
+    <div class="ageForm">
+          <input
+            type="number"
+            v-model="catYears"
+            >
+            <input
+            type="number"
+            v-model="catMonths"
+            >
+          <button class="btn" v-on:click="calculateAge">Обчислити</button>
+        </div>
+        <p v-show="humanYears>0">Вік вашого кота {{ humanYears }} людських років.</p>
+    </div>
+  </div>
+  <script src="https://unpkg.com/vue@next"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
